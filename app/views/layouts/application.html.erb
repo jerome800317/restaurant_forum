@@ -22,6 +22,7 @@
       <%= link_to('註冊', new_user_registration_path) %> |
       <%= link_to('登入', new_user_session_path) %>
     <% end %>
+    <% #在這裡 current_user, destroy_user_session_path, edit_user_registration_path, new_user_session_path, new_user_registration_path皆為devise中之helper%>
 
     <%= yield %>
   </body>
