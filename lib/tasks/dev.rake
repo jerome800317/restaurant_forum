@@ -7,7 +7,9 @@ namespace :dev do
         opening_hours: FFaker::Time.datetime, 
         tel: FFaker::PhoneNumber.short_phone_number, 
         address: FFaker::Address.street_address, 
-        description: FFaker::Lorem.paragraph
+        description: FFaker::Lorem.paragraph,
+        category: Category.all.sample #sample 是從集合中自動挑選一個Category instance回傳
+        #原本為category_id: Category.all.sample.id
       )
     end
     puts "have created fake restaurants"
