@@ -1,6 +1,4 @@
-class Admin::RestaurantsController < ApplicationController
-  #在 before_action呼叫驗證方法
-  before_action :authenticate_admin
+class Admin::RestaurantsController < Admin::BaseController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
