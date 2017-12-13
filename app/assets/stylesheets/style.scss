@@ -1,15 +1,24 @@
-.restaurant-item{
+.restaurant-item {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 4px;
   margin-bottom: 20px;
 }
 
-.restaurant-item img{
+.restaurant-item img {
   max-height: 180px;
   width: 100%;
 }
 
-.restaurant-item .captain{
+.restaurant-item .captain {
   padding: 10px;
+}
+
+.nav-pills-center {
+  text-align: center;
+}
+
+.nav-pills-center > li {
+  float: none;
+  display: inline-block;
 }
