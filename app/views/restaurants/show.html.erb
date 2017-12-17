@@ -26,6 +26,15 @@
 
     <hr>
 
+    <% @restaurant.comments.each do |comment| %>
+      <div>
+        <h4><strong><%= comment.user.email.split("@").first %></strong></h4>
+        <p><%= simple_format comment.content %></p>
+        <p class="text-muted"><em><%= time_ago_in_words(comment.created_at) + " ago" %></em></p>
+      </div>
+    <% end %>
+    <hr>
+
     <%= form_for [@restaurant, @comment] do |f| %>
       <div class="form_group">
         <%= f.text_area :content, placehoder: "請留言", class: "form-control" %>
