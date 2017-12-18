@@ -35,7 +35,6 @@
             <td>
               <p class="text-muted"><em><%= time_ago_in_words(comment.created_at) + " ago" %></em></p>
             </td>
-            <td>    </td>
             <td>
               <% if current_user.admin? %>
               <%= link_to "Delete", restaurant_comment_path(@restaurant, comment), method: :delete, data: { confirm: "Are you sure?"} %>
