@@ -1,12 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="about">
-      <%= image_tag @user.image %>
-    </div>
-    <div>
-      <h1><%= @user.name %></h1>
-      <h2><%= @user.email %></h2>
-      <p><%= @user.description %></p>
+    <div class="form-inline">
+
+      <div class="form-group">
+        <%= image_tag @user.image %>
+      </div>
+
+      <%= form_for @user do |f| %>
+        <div class="form-group">
+          <h1><%= @user.name %></h1>
+          <h2><%= @user.email %></h2>
+          <p><%= @user.description %></p>
+          <%= link_to "Edit Profile", user_path, class: "btn btn-primary" %>
+          <%= f.submit class: "btn btn-primary" %>
+          <% if @user.errors.any? %>
+            <%= @user.errors.full_messages.to_sentence %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

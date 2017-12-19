@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   mount_uploader :image, PhotoUploader
 
+  validates_presence_of :name
+
   has_many :comments
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
