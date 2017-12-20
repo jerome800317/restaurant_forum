@@ -2,12 +2,14 @@ class UsersController < ApplicationController
   before_action :set_user, :only => [:show, :edit, :update]
 
   def update
-    if @user.update(user_params)
-      flash[:notice] = "user was successfully updated"
-      redirect_to user_path
-    else
-      flash.now[:alert] = "user was failed to update, you need to check your name's column"
-      render :edit
+    if current_user.id == @user.id
+      if @user.update(user_params)
+        flash[:notice] = "user was successfully updated"
+        redirect_to user_path
+      else
+        flash.now[:alert] = "user was failed to update, you need to check your name's column"
+        render :edit
+      end
     end
   end
 

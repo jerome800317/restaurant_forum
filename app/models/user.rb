@@ -3,7 +3,7 @@ class User < ApplicationRecord
     self.role == "admin"
   end
 
-  mount_uploader :image, PhotoUploader
+  mount_uploader :avatar, PhotoUploader
 
   validates_presence_of :name
 
