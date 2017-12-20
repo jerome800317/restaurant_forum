@@ -12,6 +12,12 @@
         <p><%= @user.intro %></p>       
         <%= link_to "Edit Profile", edit_user_path, class: "btn btn-primary" if current_user.id == @user.id %>      
       </div>
+      <hr>
+      <div>
+        <% @commented_restaurants.uniq.each do |restaurant| %>
+          <div><%= link_to restaurant.name, restaurant_path(restaurant) %></div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

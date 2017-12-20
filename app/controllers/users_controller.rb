@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, :only => [:show, :edit, :update]
 
+  def show
+    @commented_restaurants = @user.restaurants
+  end
+
   def edit
     redirect_to root_path unless current_user.id == @user.id
   end
