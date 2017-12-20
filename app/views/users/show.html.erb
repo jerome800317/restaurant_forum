@@ -9,13 +9,8 @@
       <div class="form-group">
         <h1><%= @user.name %></h1>
         <h2><%= @user.email %></h2>
-<<<<<<< HEAD
         <p><%= @user.intro %></p>       
         <%= link_to "Edit Profile", edit_user_path, class: "btn btn-primary" if current_user.id == @user.id %>      
-=======
-        <p><%= @user.intro %></p>
-        <%= link_to "Edit Profile", edit_user_path, class: "btn btn-primary" %>
->>>>>>> parent of 8770eb7... user can't edit other user's profile
       </div>
     </div>
   </div>
