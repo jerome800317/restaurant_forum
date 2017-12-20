@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, :only => [:show, :edit]
+  before_action :set_user, :only => [:show, :edit, :update]
 
   def update
-    if @User.update(user_params)
+    if @user.update(user_params)
       flash[:notice] = "user was successfully updated"
       redirect_to user_path
     else
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :description, :image)
+    params.require(:user).permit(:name, :intro, :avatar)
   end
 
   def set_user
