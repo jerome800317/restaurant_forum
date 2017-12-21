@@ -8,16 +8,28 @@
 
       <div class="form-group">
         <h1><%= @user.name %></h1>
-        <h2><%= @user.email %></h2>
+        <h4><%= @user.email %></h2>
         <p><%= @user.intro %></p>       
         <%= link_to "Edit Profile", edit_user_path, class: "btn btn-primary" if current_user.id == @user.id %>      
       </div>
       <hr>
-      <div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel panel-default">
+      <h4 class="panel-heading"><%= "#{@commented_restaurants.uniq.size}" %>條已評論餐廳</h4>
+      <div class="pane-body form-inline">
         <% @commented_restaurants.uniq.each do |restaurant| %>
-          <div><%= link_to restaurant.name, restaurant_path(restaurant) %></div>
+          <div class="form-group">
+            <%= link_to(restaurant_path(restaurant)) do %>
+              <%= image_tag restaurant.image, class: "my-restaurant" %>
+            <% end %>
+            <br>
+            <%= link_to restaurant.name, restaurant_path(restaurant) %>
+          </div>
         <% end %>
       </div>
+
     </div>
   </div>
 </div>
