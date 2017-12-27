@@ -6,6 +6,14 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :restaurants, only: [:index, :show] do
     resources :comments, only:[:create, :destroy]
+
+    collection do       # => Verb Controller Action URI
+      get :feeds        # => GET  restaurants#feeds restaurant/feeds
+    end
+
+    member do           # => Verb Controller Action     URI
+      get :dashboard    # => GET  restaurants#dashboard restaurant/:id/dashboard
+    end
   end
   resources :categories, only: [:show]
   root "restaurants#index"
