@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:index, :show] do
     resources :comments, only:[:create, :destroy]
 
+    member do
+      post :favorite
+      post :unfavorite
+    end
+
     collection do       # => Verb Controller Action URI
       get :feeds        # => GET  restaurants#feeds restaurant/feeds
     end
