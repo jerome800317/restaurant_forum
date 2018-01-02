@@ -12,6 +12,11 @@ Rails.application.routes.draw do
       post :unfavorite
     end
 
+    member do
+      post :like
+      post :unlike
+    end
+
     collection do       # => Verb Controller Action URI
       get :feeds        # => GET  restaurants#feeds restaurant/feeds
     end

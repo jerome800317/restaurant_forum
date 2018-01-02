@@ -4,6 +4,10 @@ class Restaurant < ApplicationRecord
     self.favorited_users.include?(user)
   end
 
+  def is_liked?(user)
+    self.liked_users.include?(user)
+  end
+
   mount_uploader :image, PhotoUploader
   validates_presence_of :name
 
@@ -12,4 +16,7 @@ class Restaurant < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
+
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
 end
