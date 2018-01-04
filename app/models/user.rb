@@ -15,6 +15,9 @@ class User < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :liked_restaurants, through: :likes, source: :restaurant
+
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followings
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
