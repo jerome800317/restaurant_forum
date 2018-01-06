@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <% @users.each do |user| %>
+        <ul>
+          <li>
+            <%= user.name %>
+            <%= link_to "Follow", followships_path(following_id: user), method: :post %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
