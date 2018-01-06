@@ -3,6 +3,10 @@ class User < ApplicationRecord
     self.role == "admin"
   end
 
+  def following?(user)
+    self.followings.include?(user)
+  end
+
   mount_uploader :avatar, PhotoUploader
 
   validates_presence_of :name
@@ -17,7 +21,7 @@ class User < ApplicationRecord
   has_many :liked_restaurants, through: :likes, source: :restaurant
 
   has_many :followships, dependent: :destroy
-  has_many :followings, through: :followings
+  has_many :followings, through: :followships
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

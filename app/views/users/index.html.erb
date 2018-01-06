@@ -1,15 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <% @users.each do |user| %>
-        <ul>
-          <li>
-            <%= user.name %>
-            <%= link_to "Follow", followships_path(following_id: user), method: :post %>
-            <%= link_to "Unfollow", followship_path(user), method: :delete %>
-          </li>
-        </ul>
-      <% end %>
-    </div>
+    <% @users.each do |user| %>
+      <li>
+        <%= user.name %>
+        <%= render partial: "shared/follow", locals: {user: user} %>
+      </li>
+    <% end %>
   </div>
 </div>
