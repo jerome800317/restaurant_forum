@@ -8,10 +8,10 @@ class FollowshipsController < ApplicationController
       flash[:alert] = @followship.errors.full_messages.to_sentence
       redirect_back(fallback_location: root_path)
     end
-
   end
 
   def destroy
-    
+    @followship = current_user.followships.where(following_id: params[:id]).first
+    @followship.destroy
   end
 end
