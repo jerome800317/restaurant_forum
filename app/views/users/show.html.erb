@@ -9,6 +9,7 @@
       <div class="form-group">
         <h1><%= @user.name %></h1>
         <h4><%= @user.email %></h2>
+        <p><%= "#{@commented_restaurants.uniq.size}" %> 已評論餐廳 <%= "#{@favorite_restaurants.uniq.size}" %> 收藏餐廳 <%= "#{@followings.size}" %> 追蹤對象  <%= "#{@followers.size}" %> 粉絲</p>
         <p><%= @user.intro %></p>       
         <%= link_to "Edit Profile", edit_user_path, class: "btn btn-primary" if current_user.id == @user.id %>      
       </div>
@@ -16,20 +17,74 @@
     </div>
   </div>
   <div class="row">
-    <div class="panel panel-default">
-      <h4 class="panel-heading"><%= "#{@commented_restaurants.uniq.size}" %>條已評論餐廳</h4>
-      <div class="pane-body form-inline">
-        <% @commented_restaurants.uniq.each do |restaurant| %>
-          <div class="form-group">
-            <%= link_to(restaurant_path(restaurant)) do %>
-              <%= image_tag restaurant.image, class: "my-restaurant" %>
-            <% end %>
-            <br>
-            <%= link_to restaurant.name, restaurant_path(restaurant) %>
-          </div>
-        <% end %>
+    <div class="col-md-7 my-following">
+      <div class="panel panel-default">
+        <h4 class="panel-heading"><%= "#{@followings.size}" %> 追蹤對象</h4>
+        <div class="pane-body form-inline">
+          <% @followings.each do |following| %>
+            <div class="form-group">
+              <%= link_to(user_path(following)) do %>
+                <%= image_tag following.avatar, class: "my-following-pic" %>
+              <% end %>
+              <br>
+              <%= link_to following.name, user_path(following) %>
+            </div>
+            <hr>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <h4 class="panel-heading"><%= "#{@followers.size}" %> 粉絲</h4>
+        <div class="pane-body form-inline">
+          <% @followers.each do |follower| %>
+            <div class="form-group">
+              <%= link_to(user_path(follower)) do %>
+                <%= image_tag follower.avatar, class: "my-following-pic" %>
+              <% end %>
+              <br>
+              <%= link_to follower.name, user_path(follower) %>
+            </div>
+            <hr>
+          <% end %>
+        </div>
       </div>
 
     </div>
+
+    <div class="col-md-5 my-restaurant">
+      <div class="panel panel-default">
+        <h4 class="panel-heading"><%= "#{@commented_restaurants.uniq.size}" %>已評論餐廳</h4>
+        <div class="pane-body form-inline">
+          <% @commented_restaurants.uniq.each do |restaurant| %>
+            <div class="form-group">
+              <%= link_to(restaurant_path(restaurant)) do %>
+                <%= image_tag restaurant.image, class: "my-restaurant-pic" %>
+              <% end %>
+              <br>
+              <%= link_to restaurant.name, restaurant_path(restaurant) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <h4 class="panel-heading"><%= "#{@favorite_restaurants.uniq.size}" %>收藏餐廳</h4>
+        <div class="pane-body form-inline">
+          <% @favorite_restaurants.uniq.each do |restaurant| %>
+            <div class="form-group">
+              <%= link_to(restaurant_path(restaurant)) do %>
+                <%= image_tag restaurant.image, class: "my-restaurant-pic" %>
+              <% end %>
+              <br>
+              <%= link_to restaurant.name, restaurant_path(restaurant) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+
   </div>
 </div>
